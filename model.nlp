@@ -1,0 +1,1764 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hello": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "hi": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "hey": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "good,morn": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "yo": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "blue,is,sky,the,whi": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "doe,how,this,work": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "is,life,mean,of,the,what": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "can,help,me,you": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "a,have,i,question": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "help,me,out": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "do,think,you": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "do,say,what,you": {
+            "intent": "meta.question",
+            "domain": "default"
+          },
+          "stfu": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "shut,up": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "off,piss": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "it,stop": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "enough": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "nigga": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "bruh": {
+            "intent": "command.shutUp",
+            "domain": "default"
+          },
+          "about,navunda,say,someth": {
+            "intent": "question.navunda",
+            "domain": "default"
+          },
+          "about,do,navunda,think,what,you": {
+            "intent": "question.navunda",
+            "domain": "default"
+          },
+          "comment,navunda,on,villag": {
+            "intent": "question.navunda",
+            "domain": "default"
+          },
+          "about,me,navunda,tell": {
+            "intent": "question.navunda",
+            "domain": "default"
+          },
+          "alangar,better,is,navunda,or,which": {
+            "intent": "question.alangarOrNavunda",
+            "domain": "default"
+          },
+          "alangar,better,is,navunda,than": {
+            "intent": "question.alangarOrNavunda",
+            "domain": "default"
+          },
+          "doe,lack,navunda,what": {
+            "intent": "question.alangarOrNavunda",
+            "domain": "default"
+          },
+          "creator,is,who,your": {
+            "intent": "question.creator",
+            "domain": "default"
+          },
+          "made,who,you": {
+            "intent": "question.creator",
+            "domain": "default"
+          },
+          "is,name,what,your": {
+            "intent": "question.name",
+            "domain": "default"
+          },
+          "me,name,tell,your": {
+            "intent": "question.name",
+            "domain": "default"
+          },
+          "i,know,name,to,want,your": {
+            "intent": "question.name",
+            "domain": "default"
+          },
+          "name,your": {
+            "intent": "question.name",
+            "domain": "default"
+          },
+          "are,who,you": {
+            "intent": "question.name",
+            "domain": "default"
+          },
+          "an,bob@gmail,com,email,send,to": {
+            "intent": "action.email",
+            "domain": "default"
+          },
+          "com,email,support@test": {
+            "intent": "action.email",
+            "domain": "default"
+          },
+          "a,boss@compani,messag,org,shoot,to": {
+            "intent": "action.email",
+            "domain": "default"
+          },
+          "com,friend@yahoo,mail,send,to": {
+            "intent": "action.email",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greetings.hello": "default",
+          "meta.question": "default",
+          "command.shutUp": "default",
+          "question.navunda": "default",
+          "question.alangarOrNavunda": "default",
+          "question.creator": "default",
+          "question.name": "default",
+          "action.email": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "good morning",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "yo",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "why is the sky blue?",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "how does this work?",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is the meaning of life?",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you help me?",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "i have a question",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me out",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "do you think",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do you say",
+            "intent": "meta.question"
+          },
+          {
+            "domain": "default",
+            "utterance": "stfu",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "shut up",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "piss off",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "stop it",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "enough",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "nigga",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "bruh",
+            "intent": "command.shutUp"
+          },
+          {
+            "domain": "default",
+            "utterance": "say something about navunda.",
+            "intent": "question.navunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do you think about navunda",
+            "intent": "question.navunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "comment on navunda village",
+            "intent": "question.navunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about navunda",
+            "intent": "question.navunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "which is better? Alangar or Navunda",
+            "intent": "question.alangarOrNavunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "Is alangar better than navunda?",
+            "intent": "question.alangarOrNavunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "what does navunda lack?",
+            "intent": "question.alangarOrNavunda"
+          },
+          {
+            "domain": "default",
+            "utterance": "who is your creator?",
+            "intent": "question.creator"
+          },
+          {
+            "domain": "default",
+            "utterance": "who made you?",
+            "intent": "question.creator"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is your name?",
+            "intent": "question.name"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me your name",
+            "intent": "question.name"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want to know your name",
+            "intent": "question.name"
+          },
+          {
+            "domain": "default",
+            "utterance": "your name?",
+            "intent": "question.name"
+          },
+          {
+            "domain": "default",
+            "utterance": "who are you?",
+            "intent": "question.name"
+          },
+          {
+            "domain": "default",
+            "utterance": "send an email to bob@gmail.com",
+            "intent": "action.email"
+          },
+          {
+            "domain": "default",
+            "utterance": "email support@test.com",
+            "intent": "action.email"
+          },
+          {
+            "domain": "default",
+            "utterance": "shoot a message to boss@company.org",
+            "intent": "action.email"
+          },
+          {
+            "domain": "default",
+            "utterance": "send mail to friend@yahoo.com",
+            "intent": "action.email"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "hello": 1,
+              "hi": 1,
+              "hey": 1,
+              "good": 1,
+              "morn": 1,
+              "yo": 1,
+              "whi": 1,
+              "is": 1,
+              "the": 1,
+              "sky": 1,
+              "blue": 1,
+              "how": 1,
+              "doe": 1,
+              "this": 1,
+              "work": 1,
+              "what": 1,
+              "mean": 1,
+              "of": 1,
+              "life": 1,
+              "can": 1,
+              "you": 1,
+              "help": 1,
+              "me": 1,
+              "i": 1,
+              "have": 1,
+              "a": 1,
+              "question": 1,
+              "out": 1,
+              "do": 1,
+              "think": 1,
+              "say": 1,
+              "stfu": 1,
+              "shut": 1,
+              "up": 1,
+              "piss": 1,
+              "off": 1,
+              "stop": 1,
+              "it": 1,
+              "enough": 1,
+              "nigga": 1,
+              "bruh": 1,
+              "someth": 1,
+              "about": 1,
+              "navunda": 1,
+              "comment": 1,
+              "on": 1,
+              "villag": 1,
+              "tell": 1,
+              "which": 1,
+              "better": 1,
+              "alangar": 1,
+              "or": 1,
+              "than": 1,
+              "lack": 1,
+              "who": 1,
+              "your": 1,
+              "creator": 1,
+              "made": 1,
+              "name": 1,
+              "want": 1,
+              "to": 1,
+              "know": 1,
+              "are": 1,
+              "send": 1,
+              "an": 1,
+              "email": 1,
+              "bob@gmail": 1,
+              "com": 1,
+              "support@test": 1,
+              "shoot": 1,
+              "messag": 1,
+              "boss@compani": 1,
+              "org": 1,
+              "mail": 1,
+              "friend@yahoo": 1
+            },
+            "intents": {
+              "greetings.hello": 1,
+              "meta.question": 1,
+              "command.shutUp": 1,
+              "question.navunda": 1,
+              "question.alangarOrNavunda": 1,
+              "question.creator": 1,
+              "question.name": 1,
+              "action.email": 1
+            },
+            "intentFeatures": {
+              "greetings.hello": {
+                "hello": 1,
+                "hi": 1,
+                "hey": 1,
+                "good": 1,
+                "morn": 1,
+                "yo": 1
+              },
+              "meta.question": {
+                "whi": 1,
+                "is": 1,
+                "the": 1,
+                "sky": 1,
+                "blue": 1,
+                "how": 1,
+                "doe": 1,
+                "this": 1,
+                "work": 1,
+                "what": 1,
+                "mean": 1,
+                "of": 1,
+                "life": 1,
+                "can": 1,
+                "you": 1,
+                "help": 1,
+                "me": 1,
+                "i": 1,
+                "have": 1,
+                "a": 1,
+                "question": 1,
+                "out": 1,
+                "do": 1,
+                "think": 1,
+                "say": 1
+              },
+              "command.shutUp": {
+                "stfu": 1,
+                "shut": 1,
+                "up": 1,
+                "piss": 1,
+                "off": 1,
+                "stop": 1,
+                "it": 1,
+                "enough": 1,
+                "nigga": 1,
+                "bruh": 1
+              },
+              "question.navunda": {
+                "say": 1,
+                "someth": 1,
+                "about": 1,
+                "navunda": 1,
+                "what": 1,
+                "do": 1,
+                "you": 1,
+                "think": 1,
+                "comment": 1,
+                "on": 1,
+                "villag": 1,
+                "tell": 1,
+                "me": 1
+              },
+              "question.alangarOrNavunda": {
+                "which": 1,
+                "is": 1,
+                "better": 1,
+                "alangar": 1,
+                "or": 1,
+                "navunda": 1,
+                "than": 1,
+                "what": 1,
+                "doe": 1,
+                "lack": 1
+              },
+              "question.creator": {
+                "who": 1,
+                "is": 1,
+                "your": 1,
+                "creator": 1,
+                "made": 1,
+                "you": 1
+              },
+              "question.name": {
+                "what": 1,
+                "is": 1,
+                "your": 1,
+                "name": 1,
+                "tell": 1,
+                "me": 1,
+                "i": 1,
+                "want": 1,
+                "to": 1,
+                "know": 1,
+                "who": 1,
+                "are": 1,
+                "you": 1
+              },
+              "action.email": {
+                "send": 1,
+                "an": 1,
+                "email": 1,
+                "to": 1,
+                "bob@gmail": 1,
+                "com": 1,
+                "support@test": 1,
+                "shoot": 1,
+                "a": 1,
+                "messag": 1,
+                "boss@compani": 1,
+                "org": 1,
+                "mail": 1,
+                "friend@yahoo": 1
+              }
+            },
+            "featuresToIntent": {
+              "hello": [
+                "greetings.hello"
+              ],
+              "hi": [
+                "greetings.hello"
+              ],
+              "hey": [
+                "greetings.hello"
+              ],
+              "good": [
+                "greetings.hello"
+              ],
+              "morn": [
+                "greetings.hello"
+              ],
+              "yo": [
+                "greetings.hello"
+              ],
+              "whi": [
+                "meta.question"
+              ],
+              "is": [
+                "meta.question",
+                "question.alangarOrNavunda",
+                "question.creator",
+                "question.name"
+              ],
+              "the": [
+                "meta.question"
+              ],
+              "sky": [
+                "meta.question"
+              ],
+              "blue": [
+                "meta.question"
+              ],
+              "how": [
+                "meta.question"
+              ],
+              "doe": [
+                "meta.question",
+                "question.alangarOrNavunda"
+              ],
+              "this": [
+                "meta.question"
+              ],
+              "work": [
+                "meta.question"
+              ],
+              "what": [
+                "meta.question",
+                "question.navunda",
+                "question.alangarOrNavunda",
+                "question.name"
+              ],
+              "mean": [
+                "meta.question"
+              ],
+              "of": [
+                "meta.question"
+              ],
+              "life": [
+                "meta.question"
+              ],
+              "can": [
+                "meta.question"
+              ],
+              "you": [
+                "meta.question",
+                "question.navunda",
+                "question.creator",
+                "question.name"
+              ],
+              "help": [
+                "meta.question"
+              ],
+              "me": [
+                "meta.question",
+                "question.navunda",
+                "question.name"
+              ],
+              "i": [
+                "meta.question",
+                "question.name"
+              ],
+              "have": [
+                "meta.question"
+              ],
+              "a": [
+                "meta.question",
+                "action.email"
+              ],
+              "question": [
+                "meta.question"
+              ],
+              "out": [
+                "meta.question"
+              ],
+              "do": [
+                "meta.question",
+                "question.navunda"
+              ],
+              "think": [
+                "meta.question",
+                "question.navunda"
+              ],
+              "say": [
+                "meta.question",
+                "question.navunda"
+              ],
+              "stfu": [
+                "command.shutUp"
+              ],
+              "shut": [
+                "command.shutUp"
+              ],
+              "up": [
+                "command.shutUp"
+              ],
+              "piss": [
+                "command.shutUp"
+              ],
+              "off": [
+                "command.shutUp"
+              ],
+              "stop": [
+                "command.shutUp"
+              ],
+              "it": [
+                "command.shutUp"
+              ],
+              "enough": [
+                "command.shutUp"
+              ],
+              "nigga": [
+                "command.shutUp"
+              ],
+              "bruh": [
+                "command.shutUp"
+              ],
+              "someth": [
+                "question.navunda"
+              ],
+              "about": [
+                "question.navunda"
+              ],
+              "navunda": [
+                "question.navunda",
+                "question.alangarOrNavunda"
+              ],
+              "comment": [
+                "question.navunda"
+              ],
+              "on": [
+                "question.navunda"
+              ],
+              "villag": [
+                "question.navunda"
+              ],
+              "tell": [
+                "question.navunda",
+                "question.name"
+              ],
+              "which": [
+                "question.alangarOrNavunda"
+              ],
+              "better": [
+                "question.alangarOrNavunda"
+              ],
+              "alangar": [
+                "question.alangarOrNavunda"
+              ],
+              "or": [
+                "question.alangarOrNavunda"
+              ],
+              "than": [
+                "question.alangarOrNavunda"
+              ],
+              "lack": [
+                "question.alangarOrNavunda"
+              ],
+              "who": [
+                "question.creator",
+                "question.name"
+              ],
+              "your": [
+                "question.creator",
+                "question.name"
+              ],
+              "creator": [
+                "question.creator"
+              ],
+              "made": [
+                "question.creator"
+              ],
+              "name": [
+                "question.name"
+              ],
+              "want": [
+                "question.name"
+              ],
+              "to": [
+                "question.name",
+                "action.email"
+              ],
+              "know": [
+                "question.name"
+              ],
+              "are": [
+                "question.name"
+              ],
+              "send": [
+                "action.email"
+              ],
+              "an": [
+                "action.email"
+              ],
+              "email": [
+                "action.email"
+              ],
+              "bob@gmail": [
+                "action.email"
+              ],
+              "com": [
+                "action.email"
+              ],
+              "support@test": [
+                "action.email"
+              ],
+              "shoot": [
+                "action.email"
+              ],
+              "messag": [
+                "action.email"
+              ],
+              "boss@compani": [
+                "action.email"
+              ],
+              "org": [
+                "action.email"
+              ],
+              "mail": [
+                "action.email"
+              ],
+              "friend@yahoo": [
+                "action.email"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "hello",
+                "hi",
+                "hey",
+                "good",
+                "morn",
+                "yo",
+                "whi",
+                "is",
+                "the",
+                "sky",
+                "blue",
+                "how",
+                "doe",
+                "this",
+                "work",
+                "what",
+                "mean",
+                "of",
+                "life",
+                "can",
+                "you",
+                "help",
+                "me",
+                "i",
+                "have",
+                "a",
+                "question",
+                "out",
+                "do",
+                "think",
+                "say",
+                "stfu",
+                "shut",
+                "up",
+                "piss",
+                "off",
+                "stop",
+                "it",
+                "enough",
+                "nigga",
+                "bruh",
+                "someth",
+                "about",
+                "navunda",
+                "comment",
+                "on",
+                "villag",
+                "tell",
+                "which",
+                "better",
+                "alangar",
+                "or",
+                "than",
+                "lack",
+                "who",
+                "your",
+                "creator",
+                "made",
+                "name",
+                "want",
+                "to",
+                "know",
+                "are",
+                "send",
+                "an",
+                "email",
+                "bob@gmail",
+                "com",
+                "support@test",
+                "shoot",
+                "messag",
+                "boss@compani",
+                "org",
+                "mail",
+                "friend@yahoo"
+              ],
+              "intents": [
+                "greetings.hello",
+                "meta.question",
+                "command.shutUp",
+                "question.navunda",
+                "question.alangarOrNavunda",
+                "question.creator",
+                "question.name",
+                "action.email"
+              ],
+              "perceptrons": [
+                [
+                  9.770927429199219,
+                  9.769133567810059,
+                  9.712224006652832,
+                  5.00928258895874,
+                  5.00928258895874,
+                  9.638011932373047,
+                  -0.6203899383544922,
+                  -1.5270112752914429,
+                  -1.0140573978424072,
+                  -0.6203899383544922,
+                  -0.6203899383544922,
+                  -1.0617002248764038,
+                  -1.2455391883850098,
+                  -1.0617002248764038,
+                  -1.0617002248764038,
+                  -0.8598208427429199,
+                  -0.3613283634185791,
+                  -0.3613283634185791,
+                  -0.3613283634185791,
+                  -0.37491098046302795,
+                  -2.5588693618774414,
+                  -1.5109784603118896,
+                  -1.7495429515838623,
+                  -1.1045117378234863,
+                  -0.9633341431617737,
+                  -1.3985542058944702,
+                  -0.9633341431617737,
+                  -1.0692425966262817,
+                  -1.1252058744430542,
+                  -0.854328453540802,
+                  -0.8949387073516846,
+                  -4.078632831573486,
+                  -2.1387412548065186,
+                  -2.1387412548065186,
+                  -2.1380183696746826,
+                  -2.1380183696746826,
+                  -2.1371676921844482,
+                  -2.1371676921844482,
+                  -4.017116546630859,
+                  -3.983018636703491,
+                  -3.9483044147491455,
+                  -0.6245560050010681,
+                  -0.7541099190711975,
+                  -1.9635953903198242,
+                  -0.7575057148933411,
+                  -0.7575057148933411,
+                  -0.7575057148933411,
+                  -0.22724972665309906,
+                  -0.10806107521057129,
+                  -0.2851300537586212,
+                  -0.2851300537586212,
+                  -0.10806107521057129,
+                  -0.17619885504245758,
+                  -0.1652357131242752,
+                  -1.1836400032043457,
+                  -2.2029547691345215,
+                  -0.19234447181224823,
+                  -0.5030558109283447,
+                  -2.0011091232299805,
+                  -0.10785730928182602,
+                  -1.1662919521331787,
+                  -0.10785730928182602,
+                  -0.47853678464889526,
+                  -0.6082919239997864,
+                  -0.2221771478652954,
+                  -1.3679581880569458,
+                  -0.2221771478652954,
+                  -1.7323099374771118,
+                  -1.1226862668991089,
+                  -0.4168788194656372,
+                  -0.4168788194656372,
+                  -0.4168788194656372,
+                  -0.4168788194656372,
+                  -0.363020122051239,
+                  -0.363020122051239,
+                  4.234586731664318
+                ],
+                [
+                  -1.0262597799301147,
+                  -1.0198798179626465,
+                  -1.0132867097854614,
+                  -0.5260071754455566,
+                  -0.5260071754455566,
+                  -1.0045939683914185,
+                  2.125635862350464,
+                  2.4000051021575928,
+                  4.477452754974365,
+                  2.125635862350464,
+                  2.125635862350464,
+                  3.473453998565674,
+                  2.8155195713043213,
+                  3.473453998565674,
+                  3.473453998565674,
+                  -0.7389962077140808,
+                  2.351740598678589,
+                  2.351740598678589,
+                  2.351740598678589,
+                  0.5881727337837219,
+                  3.9779775142669678,
+                  4.889685153961182,
+                  3.92028546333313,
+                  3.4183428287506104,
+                  3.531069040298462,
+                  2.7611942291259766,
+                  3.531069040298462,
+                  4.306449890136719,
+                  6.417954921722412,
+                  2.5076375007629395,
+                  3.567826271057129,
+                  -1.2325268983840942,
+                  -0.8644191026687622,
+                  -0.8644191026687622,
+                  -0.8397141695022583,
+                  -0.8397141695022583,
+                  -0.815623939037323,
+                  -0.815623939037323,
+                  -1.1579922437667847,
+                  -1.1416592597961426,
+                  -1.1223756074905396,
+                  -0.23270578682422638,
+                  -5.902348518371582,
+                  -7.207858562469482,
+                  -0.1168302372097969,
+                  -0.1168302372097969,
+                  -0.1168302372097969,
+                  -0.9481381177902222,
+                  -0.2036285251379013,
+                  -0.4511248767375946,
+                  -0.4511248767375946,
+                  -0.2036285251379013,
+                  -0.18745273351669312,
+                  -0.5874112844467163,
+                  -3.5611371994018555,
+                  -2.3991482257843018,
+                  -0.4138140380382538,
+                  -1.536620855331421,
+                  -1.849653959274292,
+                  -0.07731091976165771,
+                  -1.0915448665618896,
+                  -0.07731091976165771,
+                  -1.472886085510254,
+                  -0.2225876748561859,
+                  -0.12498641014099121,
+                  -0.45106661319732666,
+                  -0.12498641014099121,
+                  -0.5364878177642822,
+                  -0.2970510423183441,
+                  -0.7417595386505127,
+                  -0.7417595386505127,
+                  -0.7417595386505127,
+                  -0.7417595386505127,
+                  -0.06756167113780975,
+                  -0.06756167113780975,
+                  1.0591063732736536
+                ],
+                [
+                  -4.986264705657959,
+                  -4.946096420288086,
+                  -4.905053615570068,
+                  -2.5932021141052246,
+                  -2.5932021141052246,
+                  -4.849763870239258,
+                  -0.6876621246337891,
+                  -2.151697874069214,
+                  -0.9684630036354065,
+                  -0.6876621246337891,
+                  -0.6876621246337891,
+                  -1.1950544118881226,
+                  -1.5937936305999756,
+                  -1.1950544118881226,
+                  -1.1950544118881226,
+                  -1.221892237663269,
+                  -0.2802983224391937,
+                  -0.2802983224391937,
+                  -0.2802983224391937,
+                  -0.1550794392824173,
+                  -2.935950517654419,
+                  -1.5576791763305664,
+                  -2.2457611560821533,
+                  -1.3413848876953125,
+                  -1.0648930072784424,
+                  -1.7070534229278564,
+                  -1.0648930072784424,
+                  -1.369227647781372,
+                  -1.1179530620574951,
+                  -1.1179530620574951,
+                  -0.6463971734046936,
+                  8.831165313720703,
+                  4.554086685180664,
+                  4.554086685180664,
+                  4.554752826690674,
+                  4.554752826690674,
+                  4.55533504486084,
+                  4.55533504486084,
+                  8.799351692199707,
+                  8.74509048461914,
+                  8.68907642364502,
+                  -0.6463971734046936,
+                  -1.2427189350128174,
+                  -2.979468584060669,
+                  -0.8341978788375854,
+                  -0.8341978788375854,
+                  -0.8341978788375854,
+                  -0.6556800603866577,
+                  -0.22278635203838348,
+                  -0.44575291872024536,
+                  -0.44575291872024536,
+                  -0.22278635203838348,
+                  -0.16601143777370453,
+                  -0.352061003446579,
+                  -2.0961673259735107,
+                  -2.887082099914551,
+                  -0.4107753336429596,
+                  -0.8753496408462524,
+                  -2.411668062210083,
+                  -0.21862444281578064,
+                  -1.7626826763153076,
+                  -0.21862444281578064,
+                  -0.7076444029808044,
+                  -0.8398639559745789,
+                  -0.3863397240638733,
+                  -1.8025097846984863,
+                  -0.3863397240638733,
+                  -2.2114195823669434,
+                  -1.353518009185791,
+                  -0.5935252904891968,
+                  -0.5935252904891968,
+                  -0.5935252904891968,
+                  -0.5935252904891968,
+                  -0.3892211318016052,
+                  -0.3892211318016052,
+                  5.2373095569606924
+                ],
+                [
+                  -0.14335474371910095,
+                  -0.13812632858753204,
+                  -0.13308584690093994,
+                  -0.10596851259469986,
+                  -0.10596851259469986,
+                  -0.1240796223282814,
+                  0,
+                  -1.8209819793701172,
+                  -0.02382293902337551,
+                  0,
+                  0,
+                  -0.015296140685677528,
+                  -2.8065383434295654,
+                  -0.015296140685677528,
+                  -0.015296140685677528,
+                  0.371082603931427,
+                  -0.02382293902337551,
+                  -0.02382293902337551,
+                  -0.02382293902337551,
+                  -0.3362678587436676,
+                  -0.5685492753982544,
+                  -0.5809988975524902,
+                  0.5170668363571167,
+                  -0.0931759849190712,
+                  -0.04899923875927925,
+                  -0.12768539786338806,
+                  -0.04899923875927925,
+                  -0.19355294108390808,
+                  0.29891544580459595,
+                  1.2762322425842285,
+                  0.3465637266635895,
+                  -0.035047758370637894,
+                  -0.028291765600442886,
+                  -0.028291765600442886,
+                  -0.027309268712997437,
+                  -0.027309268712997437,
+                  -0.02635989710688591,
+                  -0.02635989710688591,
+                  -0.030577270314097404,
+                  -0.029461950063705444,
+                  -0.028386736288666725,
+                  1.3238801956176758,
+                  7.416259765625,
+                  5.987704753875732,
+                  2.9954750537872314,
+                  2.9954750537872314,
+                  2.9954750537872314,
+                  1.113705039024353,
+                  -0.7242178916931152,
+                  -1.6164941787719727,
+                  -1.6164941787719727,
+                  -0.7242178916931152,
+                  -0.7701765298843384,
+                  -2.7759454250335693,
+                  -0.5139092206954956,
+                  -0.930976152420044,
+                  -0.030235202983021736,
+                  -0.20790350437164307,
+                  -0.8705131411552429,
+                  -0.023560933768749237,
+                  -0.24132829904556274,
+                  -0.023560933768749237,
+                  -0.18412555754184723,
+                  -0.11344380676746368,
+                  -0.057043060660362244,
+                  -0.15855422616004944,
+                  -0.057043060660362244,
+                  -0.21427899599075317,
+                  -0.07743312418460846,
+                  -0.05485910549759865,
+                  -0.05485910549759865,
+                  -0.05485910549759865,
+                  -0.05485910549759865,
+                  -0.035049762576818466,
+                  -0.035049762576818466,
+                  -0.7069251217476453
+                ],
+                [
+                  -0.11082624644041061,
+                  -0.1064009740948677,
+                  -0.10215207189321518,
+                  -0.0935516208410263,
+                  -0.0935516208410263,
+                  -0.09434279054403305,
+                  -0.33388036489486694,
+                  1.096792459487915,
+                  -0.9608717560768127,
+                  -0.33388036489486694,
+                  -0.33388036489486694,
+                  -1.0605461597442627,
+                  3.641993761062622,
+                  -1.0605461597442627,
+                  -1.0605461597442627,
+                  1.9928920269012451,
+                  -0.5677763223648071,
+                  -0.5677763223648071,
+                  -0.5677763223648071,
+                  -0.012245661579072475,
+                  -1.3307130336761475,
+                  -0.048425376415252686,
+                  -0.7846197485923767,
+                  -0.06304295361042023,
+                  -0.030821504071354866,
+                  -0.11846591532230377,
+                  -0.030821504071354866,
+                  -0.026995467022061348,
+                  -1.1419756412506104,
+                  -1.024464726448059,
+                  -0.8347547650337219,
+                  -0.04628636687994003,
+                  -0.04230756685137749,
+                  -0.04230756685137749,
+                  -0.040711987763643265,
+                  -0.040711987763643265,
+                  -0.039176005870103836,
+                  -0.039176005870103836,
+                  -0.039579469710588455,
+                  -0.03800106421113014,
+                  -0.03648548573255539,
+                  -0.7170668840408325,
+                  -2.443618059158325,
+                  4.408169746398926,
+                  -1.3159513473510742,
+                  -1.3159513473510742,
+                  -1.3159513473510742,
+                  -0.7195939421653748,
+                  1.1562021970748901,
+                  3.465153694152832,
+                  3.465153694152832,
+                  1.1562021970748901,
+                  2.309006929397583,
+                  4.702526569366455,
+                  -0.519047200679779,
+                  -1.5104073286056519,
+                  -0.3420052230358124,
+                  -0.0743182972073555,
+                  -1.1188760995864868,
+                  -0.018412256613373756,
+                  -0.264395534992218,
+                  -0.018412256613373756,
+                  -0.029293494299054146,
+                  -0.13265900313854218,
+                  -0.06620176136493683,
+                  -0.16269072890281677,
+                  -0.06620176136493683,
+                  -0.2351319044828415,
+                  -0.06878633797168732,
+                  -0.06372866779565811,
+                  -0.06372866779565811,
+                  -0.06372866779565811,
+                  -0.06372866779565811,
+                  -0.041164301335811615,
+                  -0.041164301335811615,
+                  -0.4602057150830824
+                ],
+                [
+                  -0.12681454420089722,
+                  -0.12210804224014282,
+                  -0.12553441524505615,
+                  -0.10098336637020111,
+                  -0.10098336637020111,
+                  -0.11749576032161713,
+                  -0.4472886621952057,
+                  1.9277883768081665,
+                  -0.5986172556877136,
+                  -0.4472886621952057,
+                  -0.4472886621952057,
+                  -0.05586686357855797,
+                  -0.05586686357855797,
+                  -0.05586686357855797,
+                  -0.05586686357855797,
+                  -1.7313019037246704,
+                  -0.12306205183267593,
+                  -0.12306205183267593,
+                  -0.12306205183267593,
+                  -0.30177178978919983,
+                  0.5232020020484924,
+                  -0.3116671144962311,
+                  -0.5905653238296509,
+                  -0.20084303617477417,
+                  -0.020371589809656143,
+                  -0.0734635591506958,
+                  -0.020371589809656143,
+                  -0.0043771169148385525,
+                  -0.585956871509552,
+                  -0.42912814021110535,
+                  -0.1327756643295288,
+                  -0.06742876023054123,
+                  -0.04998981952667236,
+                  -0.04998981952667236,
+                  -0.04833165183663368,
+                  -0.04833165183663368,
+                  -0.04672611877322197,
+                  -0.04672611877322197,
+                  -0.05988239869475365,
+                  -0.057861827313899994,
+                  -0.05590711161494255,
+                  -0.002757241250947118,
+                  -0.05554775521159172,
+                  -0.6132022142410278,
+                  -0.007255496457219124,
+                  -0.007255496457219124,
+                  -0.007255496457219124,
+                  -0.23663008213043213,
+                  -0.21212954819202423,
+                  -0.5210359692573547,
+                  -0.5210359692573547,
+                  -0.21212954819202423,
+                  -0.2850784957408905,
+                  0,
+                  5.861764907836914,
+                  2.0861623287200928,
+                  4.398490905761719,
+                  7.622681617736816,
+                  -2.312124252319336,
+                  -0.16314570605754852,
+                  -0.3318861722946167,
+                  -0.16314570605754852,
+                  -6.166947841644287,
+                  -0.08171812444925308,
+                  -0.04128652811050415,
+                  -0.12844696640968323,
+                  -0.04128652811050415,
+                  -0.17003503441810608,
+                  -0.06690598279237747,
+                  -0.037959396839141846,
+                  -0.037959396839141846,
+                  -0.037959396839141846,
+                  -0.037959396839141846,
+                  -0.023976527154445648,
+                  -0.023976527154445648,
+                  0.013450380027506901
+                ],
+                [
+                  -0.37227797508239746,
+                  -0.3706148564815521,
+                  -0.3587804138660431,
+                  -0.25629258155822754,
+                  -0.25629258155822754,
+                  -0.3445695638656616,
+                  -0.17240114510059357,
+                  -1.4260412454605103,
+                  -0.41622552275657654,
+                  -0.17240114510059357,
+                  -0.17240114510059357,
+                  -0.1732780784368515,
+                  -0.4010871946811676,
+                  -0.1732780784368515,
+                  -0.1732780784368515,
+                  1.5021761655807495,
+                  -0.19045333564281464,
+                  -0.19045333564281464,
+                  -0.19045333564281464,
+                  -1.0845776796340942,
+                  2.5205321311950684,
+                  -1.400289535522461,
+                  -0.5898410677909851,
+                  0.0018062915187329054,
+                  -0.3378097414970398,
+                  -0.6990156173706055,
+                  -0.3378097414970398,
+                  -0.24344205856323242,
+                  -2.4452362060546875,
+                  -0.7347514629364014,
+                  -1.7477891445159912,
+                  -0.2353840172290802,
+                  -0.1588302105665207,
+                  -0.1588302105665207,
+                  -0.153855100274086,
+                  -0.153855100274086,
+                  -0.14902453124523163,
+                  -0.14902453124523163,
+                  -0.22634048759937286,
+                  -0.22404393553733826,
+                  -0.22170571982860565,
+                  -0.02377263270318508,
+                  -0.8273939490318298,
+                  -1.122815489768982,
+                  -0.03733785077929497,
+                  -0.03733785077929497,
+                  -0.03733785077929497,
+                  0.8163643479347229,
+                  -0.01713206246495247,
+                  -0.030098453164100647,
+                  -0.030098453164100647,
+                  -0.01713206246495247,
+                  -0.006703991908580065,
+                  -0.18047229945659637,
+                  1.364076852798462,
+                  4.623321056365967,
+                  -4.688496112823486,
+                  -3.8374781608581543,
+                  9.320592880249023,
+                  0.37094154953956604,
+                  -0.5703636407852173,
+                  0.37094154953956604,
+                  9.90202522277832,
+                  -0.4809322655200958,
+                  -0.2182948887348175,
+                  -0.4475599229335785,
+                  -0.2182948887348175,
+                  -0.7063332796096802,
+                  -0.14281906187534332,
+                  -0.2942681610584259,
+                  -0.2942681610584259,
+                  -0.2942681610584259,
+                  -0.2942681610584259,
+                  -0.1728586107492447,
+                  -0.1728586107492447,
+                  0.2160386812634811
+                ],
+                [
+                  -0.42797961831092834,
+                  -0.4209342896938324,
+                  -0.4144083559513092,
+                  -0.27708491683006287,
+                  -0.27708491683006287,
+                  -0.4054185748100281,
+                  -0.12152376025915146,
+                  -0.41998782753944397,
+                  -0.2646414339542389,
+                  -0.12152376025915146,
+                  -0.12152376025915146,
+                  -0.1842097043991089,
+                  -0.22953128814697266,
+                  -0.1842097043991089,
+                  -0.1842097043991089,
+                  -0.2646181285381317,
+                  -0.09193138033151627,
+                  -0.09193138033151627,
+                  -0.09193138033151627,
+                  -0.10405892878770828,
+                  -0.48600083589553833,
+                  -0.279377818107605,
+                  -0.3725470006465912,
+                  -1.2824857234954834,
+                  -0.48212745785713196,
+                  1.7387325763702393,
+                  -0.48212745785713196,
+                  -0.12702113389968872,
+                  -0.23356136679649353,
+                  -0.13812753558158875,
+                  -0.16840162873268127,
+                  -0.3913165032863617,
+                  -0.22311072051525116,
+                  -0.22311072051525116,
+                  -0.21598486602306366,
+                  -0.21598486602306366,
+                  -0.22114785015583038,
+                  -0.22114785015583038,
+                  -0.3874989449977875,
+                  -0.3857412040233612,
+                  -0.38388997316360474,
+                  -0.07799625396728516,
+                  -0.14176806807518005,
+                  -0.3366182744503021,
+                  -0.08633101731538773,
+                  -0.08633101731538773,
+                  -0.08633101731538773,
+                  -0.06246637925505638,
+                  -0.02575346641242504,
+                  -0.05082490295171738,
+                  -0.05082490295171738,
+                  -0.02575346641242504,
+                  -0.015608647838234901,
+                  -0.017782822251319885,
+                  -0.11632753908634186,
+                  -0.8070815205574036,
+                  -0.02950836718082428,
+                  -0.0471358560025692,
+                  -0.7632800340652466,
+                  -0.6999077796936035,
+                  3.0490927696228027,
+                  -0.6999077796936035,
+                  -0.01519140973687172,
+                  1.5610549449920654,
+                  -0.21040475368499756,
+                  3.9698150157928467,
+                  -0.21040475368499756,
+                  5.74180269241333,
+                  4.180263996124268,
+                  2.2771785259246826,
+                  2.2771785259246826,
+                  2.2771785259246826,
+                  2.2771785259246826,
+                  1.7717101573944092,
+                  1.7717101573944092,
+                  0.3889361730100174
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "hello"
+      ],
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "hey"
+      ],
+      [
+        "en",
+        "good morning"
+      ],
+      [
+        "en",
+        "yo"
+      ],
+      [
+        "en",
+        "why is the sky blue?"
+      ],
+      [
+        "en",
+        "how does this work?"
+      ],
+      [
+        "en",
+        "what is the meaning of life?"
+      ],
+      [
+        "en",
+        "can you help me?"
+      ],
+      [
+        "en",
+        "i have a question"
+      ],
+      [
+        "en",
+        "help me out"
+      ],
+      [
+        "en",
+        "do you think"
+      ],
+      [
+        "en",
+        "what do you say"
+      ],
+      [
+        "en",
+        "stfu"
+      ],
+      [
+        "en",
+        "shut up"
+      ],
+      [
+        "en",
+        "piss off"
+      ],
+      [
+        "en",
+        "stop it"
+      ],
+      [
+        "en",
+        "enough"
+      ],
+      [
+        "en",
+        "nigga"
+      ],
+      [
+        "en",
+        "bruh"
+      ],
+      [
+        "en",
+        "say something about navunda."
+      ],
+      [
+        "en",
+        "what do you think about navunda"
+      ],
+      [
+        "en",
+        "comment on navunda village"
+      ],
+      [
+        "en",
+        "tell me about navunda"
+      ],
+      [
+        "en",
+        "which is better? Alangar or Navunda"
+      ],
+      [
+        "en",
+        "Is alangar better than navunda?"
+      ],
+      [
+        "en",
+        "what does navunda lack?"
+      ],
+      [
+        "en",
+        "who is your creator?"
+      ],
+      [
+        "en",
+        "who made you?"
+      ],
+      [
+        "en",
+        "what is your name?"
+      ],
+      [
+        "en",
+        "tell me your name"
+      ],
+      [
+        "en",
+        "i want to know your name"
+      ],
+      [
+        "en",
+        "your name?"
+      ],
+      [
+        "en",
+        "who are you?"
+      ],
+      [
+        "en",
+        "send an email to bob@gmail.com"
+      ],
+      [
+        "en",
+        "email support@test.com"
+      ],
+      [
+        "en",
+        "shoot a message to boss@company.org"
+      ],
+      [
+        "en",
+        "send mail to friend@yahoo.com"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

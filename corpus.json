@@ -1,0 +1,77 @@
+{
+  "name": "SmartBot",
+  "locale": "en-US",
+  "data": [
+    {
+      "intent": "greetings.hello",
+      "utterances": ["hello", "hi", "hey", "good morning", "yo"]
+    },
+    {
+      "intent": "meta.question",
+      "utterances": [
+        "why is the sky blue?",
+        "how does this work?",
+        "what is the meaning of life?",
+        "can you help me?",
+        "i have a question",
+        "help me out",
+        "do you think",
+        "what do you say"
+      ]
+    }, {
+      "intent":"command.shutUp",
+      "utterances":[
+        "stfu",
+        "shut up",
+        "piss off",
+        "stop it",
+        "enough",
+        "nigga",
+        "bruh"
+      ]
+    },
+    {
+      "intent":"question.navunda",
+      "utterances":[
+        "say something about navunda.",
+        "what do you think about navunda",
+        "comment on navunda village",
+        "tell me about navunda" 
+      ]
+    },
+     {
+      "intent":"question.alangarOrNavunda",
+      "utterances":[
+        "which is better? Alangar or Navunda",
+        "Is alangar better than navunda?",
+        "what does navunda lack?"
+      ]
+     },
+     {
+      "intent":"question.creator",
+      "utterances":[
+        "who is your creator?",
+        "who made you?"
+      ]
+     },
+      {
+        "intent":"question.name",
+        "utterances":[
+          "what is your name?",
+          "tell me your name",
+          "i want to know your name",
+          "your name?",
+          "who are you?"
+        ]
+      },
+    {
+      "intent": "action.email",
+      "utterances": [
+        "send an email to bob@gmail.com",
+        "email support@test.com",
+        "shoot a message to boss@company.org",
+        "send mail to friend@yahoo.com"
+      ]
+    }
+  ]
+}
