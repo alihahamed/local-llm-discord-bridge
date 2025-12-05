@@ -18,9 +18,10 @@
         "do you think",
         "what do you say"
       ]
-    }, {
-      "intent":"command.shutUp",
-      "utterances":[
+    },
+    {
+      "intent": "command.shutUp",
+      "utterances": [
         "stfu",
         "shut up",
         "piss off",
@@ -31,39 +32,36 @@
       ]
     },
     {
-      "intent":"question.navunda",
-      "utterances":[
+      "intent": "question.navunda",
+      "utterances": [
         "say something about navunda.",
         "what do you think about navunda",
         "comment on navunda village",
-        "tell me about navunda" 
+        "tell me about navunda"
       ]
     },
-     {
-      "intent":"question.alangarOrNavunda",
-      "utterances":[
+    {
+      "intent": "question.alangarOrNavunda",
+      "utterances": [
         "which is better? Alangar or Navunda",
         "Is alangar better than navunda?",
         "what does navunda lack?"
       ]
-     },
-     {
-      "intent":"question.creator",
-      "utterances":[
-        "who is your creator?",
-        "who made you?"
+    },
+    {
+      "intent": "question.creator",
+      "utterances": ["who is your creator?", "who made you?"]
+    },
+    {
+      "intent": "question.name",
+      "utterances": [
+        "what is your name?",
+        "tell me your name",
+        "i want to know your name",
+        "your name?",
+        "who are you?"
       ]
-     },
-      {
-        "intent":"question.name",
-        "utterances":[
-          "what is your name?",
-          "tell me your name",
-          "i want to know your name",
-          "your name?",
-          "who are you?"
-        ]
-      },
+    },
     {
       "intent": "action.email",
       "utterances": [
@@ -71,6 +69,15 @@
         "email support@test.com",
         "shoot a message to boss@company.org",
         "send mail to friend@yahoo.com"
+      ]
+    },
+    {
+      "intent": "command.email_summary",
+      "utterances": [
+        "write an email to %email% about the project status",
+        "send mail to %email% regarding the meeting",
+        "email this summary to %email%",
+        "draft a note to %email% about my resignation"
       ]
     }
   ]

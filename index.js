@@ -1,5 +1,5 @@
 const { NlpManager, Language } = require("node-nlp");
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, email } = require("discord.js");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const Stream = require("stream");
@@ -13,12 +13,31 @@ const client = new Client({
   ],
 });
 
-const answers = [
-  "aight 😔",
-  "you made me sad",
-  "imma cry now",
-  "brb my friends dont like me",
-];
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+  },
+});
+
+async function sendMail(subject, body, recipient) {
+  const mailOptions = {
+    from: `${client.user.username} <${process.env.GMAIL_USER}>`,
+    recipient: recipient,
+    subject: subject,
+    body: body,
+  };
+
+  try {
+  await transporter.sendMail(mailOptions);
+    return true;
+    console.log("Mail sent!");
+  } catch (error) {
+    console.log("Error sending mail", error);
+    return false
+  }
+}
 
 const manager = new NlpManager({ languages: ["en"], forceNER: true });
 const MODEL_PATH = "./model.nlp";
@@ -33,14 +52,14 @@ async function getAnswer(userMessage, sysInstructions) {
       body: JSON.stringify({
         model: "llama3.2",
         prompt: userMessage,
-        system:sysInstructions,
+        system: sysInstructions,
         stream: false,
       }),
     });
 
     const data = await response.json();
-    console.log("The response is ", data.response);
-    return data.response.trim()
+    // console.log("The response is ", data.response);
+    return data.response.trim();
   } catch (error) {
     console.log(error);
     console.log("My brain is lagging");
@@ -65,6 +84,7 @@ client.once("ready", async () => {
 
 client.on("messageCreate", async (message) => {
   let systemInstruction = "";
+  let executeSlm = true
   // console.log(message)
 
   if (message.author.bot) return;
@@ -83,6 +103,65 @@ client.on("messageCreate", async (message) => {
     if (response.score < 0.6) return;
 
     switch (response.intent) {
+      case "command.email_summary":
+        const emailEntity = response.entities.find((e) => e.entity === "email");
+        if (!emailEntity) {
+          message.reply(
+            "You want me to send an email, but you failed to provide a valid recipient address. Are you this incompetent in real life?"
+          );
+          executeSlm = false
+          break;
+        }
+
+        const recipientMail = emailEntity.sourceText;
+        console.log("recipeint mail data:", recipientMail);
+
+        const recipientName = recipientMail.replace('@gmail.com','')
+        console.log(recipientName)
+
+        const senderName = message.author.username
+
+        const contentForSlm = cleanUpText.replace(recipientMail, "").trim();
+        console.log("slm content:", contentForSlm);
+
+        systemInstruction = `You are a cold, hyper-professional executive assistant. The user wants to send an email about: "${contentForSlm}". Generate a formal, perfectly formatted, and highly efficient email subject line and body text (max 4 paragraphs). The email must maintain a tone of passive-aggressive professionalism. The email body MUST begin with "Dear, ${recipientName}" and end with "Best regards, ${senderName}". Do NOT include 'To:' or 'From:' fields.`       
+         await message.channel.sendTyping();
+        const llmResponseText = await getAnswer(
+          contentForSlm,
+          systemInstruction
+        );
+        console.log("llm response text", llmResponseText);
+
+        const lines = llmResponseText
+          .split("\n")
+          .filter((line) => line.trim() !== "");
+        const generatedSubject = lines[0].startsWith("Subject:")
+          ? lines[0].replace("Subject:", "").trim()
+          : `Re: ${contentForLLM.substring(0, 50)}...`;
+        const generatedBody = lines.join("\n");
+
+        console.log("lines", lines)
+        console.log("generatedSubject", generatedSubject)
+        console.log("generatedBody", generatedBody)
+
+        const sentFlag = await sendMail(
+          generatedSubject,
+          generatedBody,
+          recipientMail
+        );
+
+        if (sentFlag) {
+          message.reply(
+            `✅ The message has been processed and begrudgingly sent to **${recipientMail}** with the subject: \`${generatedSubject}\`. Go check your inbox, you organizational failure.`
+          );
+        } else {
+          message.reply(
+            "❌ Email sending failed. Check the console for why your life is falling apart."
+          );
+        }
+        executeSlm = false
+        break;
+
       case "greetings.hello":
         systemInstruction =
           "The user is saying hello. Respond with a cold, condescending greeting and demand their purpose for wasting your time. Be rude.";
@@ -119,7 +198,7 @@ client.on("messageCreate", async (message) => {
         break;
     }
 
-    if (systemInstruction) {
+    if (executeSlm) {
       await message.channel.sendTyping();
 
       const answer = await getAnswer(cleanUpText, systemInstruction);
