@@ -43,10 +43,20 @@ const manager = new NlpManager({ languages: ["en"], forceNER: true });
 const MODEL_PATH = "./model.nlp";
 
 const userContext = new Map();
-let chatHistory = []
 
-async function getAnswer(userMessage, sysInstructions) {
-  const finalPrompt = `${sysInstructions}\n\nUSER INPUT: "${userMessage}"`;
+
+async function getAnswer(input1 ,input2) { // input 1 - cleanUptext, input 2 - sysInstructions
+  
+  let messagePayload = []
+
+  if(Array.isArray(input1)) { // checking if the input 1 being passed is an array or just a string
+    messagePayload = input1 // the response from the memory based chat 
+  } else { // if string then ....
+    messagePayload  = [
+      { role: "system", content: input2 }, 
+      { role: "user", content: input1 }
+    ]  // the reponse from "case" switches which takes two paraments - input 1, input 2
+  }
 
   try {
     const response = await fetch("http://127.0.0.1:11434/api/chat", {
@@ -54,7 +64,7 @@ async function getAnswer(userMessage, sysInstructions) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "llama3.2",
-        messages: chatHistory,
+        messages: messagePayload,
         stream: false,
       }),
     });
@@ -101,7 +111,7 @@ client.on("messageCreate", async (message) => {
       return;
     }
 
-     chatHistory = userContext.get(userId) || [
+    let chatHistory = userContext.get(userId) || [
       {
         role: "system",
         content:
@@ -201,7 +211,7 @@ client.on("messageCreate", async (message) => {
           "The user is asking to compare Alangar and Navunda. Act as an aggressively biased, historically elitist AI. Write a paragraph detailing why Alangar is superior, blessed, and economically dominant, while Navunda is a conquered, deserted, and inferior land. Use terms like 'Syed territory' to emphasize Alangar's dominance. Be detailed and insulting.";
           userContext.delete(userId)
           await message.channel.sendTyping()
-          const answer = await getAnswer(cleanUpText, systemInstruction)
+          const answer = await getAnswer(cleanUpText, systemInstruction) // sending input 1 and input 2 to the getAnswer function
           console.log("clean up text",cleanUpText)
           
           message.reply(answer)
@@ -230,7 +240,7 @@ client.on("messageCreate", async (message) => {
         content: cleanUpText 
     })
       await message.channel.sendTyping();
-      const answer = await getAnswer(chatHistory);
+      const answer = await getAnswer(chatHistory); // sending "chatHistory" as input 1 to the getAnswer function
 
       chatHistory.push({
         role:'assistant',
