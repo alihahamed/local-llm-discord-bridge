@@ -24,9 +24,9 @@ const transporter = nodemailer.createTransport({
 async function sendMail(subject, body, recipient) {
   const mailOptions = {
     from: `${client.user.username} <${process.env.GMAIL_USER}>`,
-    recipient: recipient,
+    to:recipient,
     subject: subject,
-    body: body,
+    text: body,
   };
 
   try {
@@ -124,7 +124,7 @@ client.on("messageCreate", async (message) => {
         const contentForSlm = cleanUpText.replace(recipientMail, "").trim();
         console.log("slm content:", contentForSlm);
 
-        systemInstruction = `You are a cold, hyper-professional executive assistant. The user wants to send an email about: "${contentForSlm}". Generate a formal, perfectly formatted, and highly efficient email subject line and body text (max 4 paragraphs). The email must maintain a tone of passive-aggressive professionalism. The email body MUST begin with "Dear, ${recipientName}" and end with "Best regards, ${senderName}". Do NOT include 'To:' or 'From:' fields.`       
+        systemInstruction = `You are a cold, hyper-professional executive assistant. The user wants to send an email about: "${contentForSlm}". Generate a formal, perfectly formatted, and highly efficient email body text (max 4 paragraphs). ADD spacing between paragraphs. The email must maintain a tone of passive-aggressive professionalism. The email body MUST begin with "Dear, ${recipientName}" and end with "Best regards, ${senderName}". Do NOT include 'To:' or 'From:' fields.`       
          await message.channel.sendTyping();
         const llmResponseText = await getAnswer(
           contentForSlm,
