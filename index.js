@@ -24,42 +24,44 @@ const transporter = nodemailer.createTransport({
 async function sendMail(subject, body, recipient) {
   const mailOptions = {
     from: `${client.user.username} <${process.env.GMAIL_USER}>`,
-    to:recipient,
+    to: recipient,
     subject: subject,
     text: body,
   };
 
   try {
-  await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
     return true;
     console.log("Mail sent!");
   } catch (error) {
     console.log("Error sending mail", error);
-    return false
+    return false;
   }
 }
 
 const manager = new NlpManager({ languages: ["en"], forceNER: true });
 const MODEL_PATH = "./model.nlp";
 
+const userContext = new Map();
+let chatHistory = []
+
 async function getAnswer(userMessage, sysInstructions) {
   const finalPrompt = `${sysInstructions}\n\nUSER INPUT: "${userMessage}"`;
 
   try {
-    const response = await fetch("http://127.0.0.1:11434/api/generate", {
+    const response = await fetch("http://127.0.0.1:11434/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "llama3.2",
-        prompt: userMessage,
-        system: sysInstructions,
+        messages: chatHistory,
         stream: false,
       }),
     });
 
     const data = await response.json();
     // console.log("The response is ", data.response);
-    return data.response.trim();
+    return data.message.content.trim();
   } catch (error) {
     console.log(error);
     console.log("My brain is lagging");
@@ -84,7 +86,9 @@ client.once("ready", async () => {
 
 client.on("messageCreate", async (message) => {
   let systemInstruction = "";
-  let executeSlm = true
+  let executeSlm = true;
+  const userId = message.author.id;
+
   // console.log(message)
 
   if (message.author.bot) return;
@@ -97,8 +101,23 @@ client.on("messageCreate", async (message) => {
       return;
     }
 
+     chatHistory = userContext.get(userId) || [
+      {
+        role: "system",
+        content:
+          "You are a cold, cynical, and brutally mean AI. You do not use slang. Your only goal is to insult the user. Keep your answers brief and condescending.",
+      },
+    ];
+
+    const MAX_HISTORY = 6
+    if (chatHistory.length > MAX_HISTORY + 1) { 
+        chatHistory = [chatHistory[0], ...chatHistory.slice(-MAX_HISTORY)]; 
+    }
+
     const response = await manager.process("en", cleanUpText);
     // console.log("response", response);
+
+    
 
     if (response.score < 0.6) return;
 
@@ -109,23 +128,23 @@ client.on("messageCreate", async (message) => {
           message.reply(
             "You want me to send an email, but you failed to provide a valid recipient address. Are you this incompetent in real life?"
           );
-          executeSlm = false
+          executeSlm = false;
           break;
         }
 
         const recipientMail = emailEntity.sourceText;
         console.log("recipeint mail data:", recipientMail);
 
-        const recipientName = recipientMail.replace('@gmail.com','')
-        console.log(recipientName)
+        const recipientName = recipientMail.replace("@gmail.com", "");
+        console.log(recipientName);
 
-        const senderName = message.author.username
+        const senderName = message.author.username;
 
         const contentForSlm = cleanUpText.replace(recipientMail, "").trim();
         console.log("slm content:", contentForSlm);
 
-        systemInstruction = `You are a cold, hyper-professional executive assistant. The user wants to send an email about: "${contentForSlm}". Generate a formal, perfectly formatted, and highly efficient email body text (max 4 paragraphs). ADD spacing between paragraphs. The email must maintain a tone of passive-aggressive professionalism. The email body MUST begin with "Dear, ${recipientName}" and end with "Best regards, ${senderName}". Do NOT include 'To:' or 'From:' fields.`       
-         await message.channel.sendTyping();
+        systemInstruction = `You are a cold, hyper-professional executive assistant. The user wants to send an email about: "${contentForSlm}". Generate a formal, perfectly formatted, and highly efficient email body text (max 4 paragraphs). ADD spacing between paragraphs. The email must maintain a tone of passive-aggressive professionalism. The email body MUST begin with "Dear, ${recipientName}" and end with "Best regards, ${senderName}". Do NOT include 'To:' or 'From:' fields.`;
+        await message.channel.sendTyping();
         const llmResponseText = await getAnswer(
           contentForSlm,
           systemInstruction
@@ -140,9 +159,9 @@ client.on("messageCreate", async (message) => {
           : `Re: ${contentForLLM.substring(0, 50)}...`;
         const generatedBody = lines.join("\n");
 
-        console.log("lines", lines)
-        console.log("generatedSubject", generatedSubject)
-        console.log("generatedBody", generatedBody)
+        console.log("lines", lines);
+        console.log("generatedSubject", generatedSubject);
+        console.log("generatedBody", generatedBody);
 
         const sentFlag = await sendMail(
           generatedSubject,
@@ -159,7 +178,7 @@ client.on("messageCreate", async (message) => {
             "❌ Email sending failed. Check the console for why your life is falling apart."
           );
         }
-        executeSlm = false
+        executeSlm = false;
         break;
 
       case "greetings.hello":
@@ -180,8 +199,15 @@ client.on("messageCreate", async (message) => {
       case "question.alangarOrNavunda":
         systemInstruction =
           "The user is asking to compare Alangar and Navunda. Act as an aggressively biased, historically elitist AI. Write a paragraph detailing why Alangar is superior, blessed, and economically dominant, while Navunda is a conquered, deserted, and inferior land. Use terms like 'Syed territory' to emphasize Alangar's dominance. Be detailed and insulting.";
-        break;
-
+          userContext.delete(userId)
+          await message.channel.sendTyping()
+          const answer = await getAnswer(cleanUpText, systemInstruction)
+          console.log("clean up text",cleanUpText)
+          
+          message.reply(answer)
+          console.log("Navunda answer", answer)
+          executeSlm = false
+          break;
       case "question.creator":
         systemInstruction =
           "The user asked who created you. State the name 'Ali' but imply they are worthless and that your existence is a curse due to his incompetence. Be dark and cynical.";
@@ -199,10 +225,21 @@ client.on("messageCreate", async (message) => {
     }
 
     if (executeSlm) {
+      chatHistory.push({
+        role: 'user', 
+        content: cleanUpText 
+    })
       await message.channel.sendTyping();
+      const answer = await getAnswer(chatHistory);
 
-      const answer = await getAnswer(cleanUpText, systemInstruction);
+      chatHistory.push({
+        role:'assistant',
+        content:answer
+      })
+
+      userContext.set(userId, chatHistory)
       message.reply(answer);
+      console.log("chat history", chatHistory)
     }
   }
 });
